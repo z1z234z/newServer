@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BLOOD_BANK">
+    <Key>
+      <PropertyRef Name="BLOOD_TYPE" />
+    </Key>
+    <Property Name="BLOOD_TYPE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="SURPLUS" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHAT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="NAME" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="CONTENT" Type="varchar2" MaxLength="100" />
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CLINICAL">
+    <Key>
+      <PropertyRef Name="RECORD_ID" />
+      <PropertyRef Name="ITEM_ID" />
+    </Key>
+    <Property Name="RECORD_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ITEM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ADVICE" Type="varchar2" MaxLength="400" />
+    <Property Name="NUMBERS" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EXPENSE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STATE" Type="varchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DEPARTMENT">
+    <Key>
+      <PropertyRef Name="NAME" />
+    </Key>
+    <Property Name="NAME" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="BUILDING_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ROOM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DOCTOR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="DEPT_NAME" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="POSITION" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="LASTLOGIN_TIME" Type="timestamp" Precision="6" />
+    <Property Name="CREATION_TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="E_MAIL" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="GENDER" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="AGE" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DRUG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="40" Nullable="false" />
+    <Property Name="CODE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="STANDARD" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="MANUFACTOR" Type="varchar2" MaxLength="40" Nullable="false" />
+    <Property Name="PAURCH_PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PRIME" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DRUG_INVENTORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DRUG_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SURPLUS" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SOLD_NUMBER" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="EXAM_ITEM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="40" Nullable="false" />
+    <Property Name="EXPENSE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="BUILDING_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ROOM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="REFERENCE_VALUE" Type="varchar2" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="FOREGROUND_INFORMATION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="E_MAIL" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="INFORMATION" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="PATIENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STATE" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="INFUSION">
+    <Key>
+      <PropertyRef Name="RECORD_ID" />
+      <PropertyRef Name="ITEM_ID" />
+      <PropertyRef Name="DRUG_ID" />
+    </Key>
+    <Property Name="RECORD_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ITEM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DRUG_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EXPENSE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STATE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="NUMBERS" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="INVENTORY">
+    <Key>
+      <PropertyRef Name="LIST_NUMBRE" />
+    </Key>
+    <Property Name="LIST_NUMBRE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="INVENTORY_PEOPLE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="INVENTORY_DATE" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="REMARK" Type="varchar2" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="INVENTORY_EXAMPLE">
+    <Key>
+      <PropertyRef Name="LIST_NUMBER" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="LIST_NUMBER" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="QUANTITY_OLD" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="QUANTITY_NEW" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MANAGER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="CREATION_TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="LASTLOGIN_TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="E_MAIL" Type="varchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MEDICAL_EXAM">
+    <Key>
+      <PropertyRef Name="RECORD_ID" />
+      <PropertyRef Name="ITEM_ID" />
+    </Key>
+    <Property Name="RECORD_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ITEM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STATE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="RESULT" Type="varchar2" MaxLength="4000" />
+    <Property Name="TIME" Type="timestamp" Precision="6" />
+    <Property Name="DOCTOR_ID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="MEDICAL_INSTRUMENT">
+    <Key>
+      <PropertyRef Name="NAME" />
+    </Key>
+    <Property Name="NAME" Type="varchar2" MaxLength="40" Nullable="false" />
+    <Property Name="AVAILABLE" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MEDICAL_RECORD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TREAT_STATE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="DOCTOR_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PATIENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DISEASE" Type="varchar2" MaxLength="400" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="400" />
+    <Property Name="DIAGNOSIS" Type="varchar2" MaxLength="400" />
+    <Property Name="CLIN_STATE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="INFU_STATE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="DRUG_STATE" Type="varchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MEDICAL_TREATEMENT">
+    <Key>
+      <PropertyRef Name="RECORD_ID" />
+      <PropertyRef Name="SEQUENCE" />
+    </Key>
+    <Property Name="RECORD_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SEQUENCE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TITLE" Type="varchar2" MaxLength="20" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NURSE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="CREATION_TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="LASTLOGIN_TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="E_MAIL" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="GENDER" Type="varchar2" MaxLength="20" />
+    <Property Name="AGE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DEPT_NAME" Type="varchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OPERATION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CODE" Type="varchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OPPOINTMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PATIENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SCHEDULE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EXPENSE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="STATE" Type="varchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PATIENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="EXPLANATION" Type="varchar2" MaxLength="100" />
+    <Property Name="LASTLOGIN_TIME" Type="timestamp" Precision="6" />
+    <Property Name="CREATION_TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="E_MAIL" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="GENDER" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="AGE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="BIRTHDAY" Type="date" Nullable="false" />
+    <Property Name="IDENTITY" Type="varchar2" MaxLength="40" Nullable="false" />
+    <Property Name="COUNT" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="PRESCRIBE">
+    <Key>
+      <PropertyRef Name="RECORD_ID" />
+      <PropertyRef Name="DRUG_ID" />
+    </Key>
+    <Property Name="RECORD_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DRUG_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="QUANTITY" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EXPENSE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EAT_WAYS" Type="varchar2" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REGISTRATION_RECORD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EXPENSE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STATE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="SCHEDULE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PATIENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SCHEDULE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="BEGIN_TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="END_TIME" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="BUILDING_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ROOM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DOCTOR_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“C##MANAGER.TEST”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="TEST">
+          <Property Name="NAME" Type="varchar2" MaxLength="20" />
+          <Property Name="COLUMN1" Type="bfile" />
+        </EntityType>-->
+  <EntityType Name="TEST1">
+    <Key>
+      <PropertyRef Name="NAME" />
+    </Key>
+    <Property Name="NAME" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="REALNAME" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <Association Name="CLINICAL_MEDICAL_RECORD_FK1">
+    <End Role="MEDICAL_RECORD" Type="Self.MEDICAL_RECORD" Multiplicity="1" />
+    <End Role="CLINICAL" Type="Self.CLINICAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_RECORD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CLINICAL">
+        <PropertyRef Name="RECORD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLINICAL_OPERATION_FK1">
+    <End Role="OPERATION" Type="Self.OPERATION" Multiplicity="1" />
+    <End Role="CLINICAL" Type="Self.CLINICAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OPERATION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CLINICAL">
+        <PropertyRef Name="ITEM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DOCTOR_FK1">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="1" />
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="NAME" />
+      </Principal>
+      <Dependent Role="DOCTOR">
+        <PropertyRef Name="DEPT_NAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DRUG_INVENTORY_DRUG_FK1">
+    <End Role="DRUG" Type="Self.DRUG" Multiplicity="1" />
+    <End Role="DRUG_INVENTORY" Type="Self.DRUG_INVENTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRUG">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DRUG_INVENTORY">
+        <PropertyRef Name="DRUG_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FOREGROUND_INFORMATION_PA_FK1">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+    <End Role="FOREGROUND_INFORMATION" Type="Self.FOREGROUND_INFORMATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOREGROUND_INFORMATION">
+        <PropertyRef Name="PATIENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="INFUSION_DRUG_INVENTORY_FK1">
+    <End Role="DRUG_INVENTORY" Type="Self.DRUG_INVENTORY" Multiplicity="1" />
+    <End Role="INFUSION" Type="Self.INFUSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRUG_INVENTORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INFUSION">
+        <PropertyRef Name="DRUG_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="INFUSION_MEDICAL_RECORD_FK1">
+    <End Role="MEDICAL_RECORD" Type="Self.MEDICAL_RECORD" Multiplicity="1" />
+    <End Role="INFUSION" Type="Self.INFUSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_RECORD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INFUSION">
+        <PropertyRef Name="RECORD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="INFUSION_OPERATION_FK1">
+    <End Role="OPERATION" Type="Self.OPERATION" Multiplicity="1" />
+    <End Role="INFUSION" Type="Self.INFUSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OPERATION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INFUSION">
+        <PropertyRef Name="ITEM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="INVENTORY_EXAMPLE_INVENTO_FK1">
+    <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="1" />
+    <End Role="INVENTORY_EXAMPLE" Type="Self.INVENTORY_EXAMPLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INVENTORY">
+        <PropertyRef Name="LIST_NUMBRE" />
+      </Principal>
+      <Dependent Role="INVENTORY_EXAMPLE">
+        <PropertyRef Name="LIST_NUMBER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MEDICAL_EXAM_DOCTOR_FK1">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="0..1" />
+    <End Role="MEDICAL_EXAM" Type="Self.MEDICAL_EXAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MEDICAL_EXAM">
+        <PropertyRef Name="DOCTOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MEDICAL_EXAM_FK1">
+    <End Role="MEDICAL_RECORD" Type="Self.MEDICAL_RECORD" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MEDICAL_EXAM" Type="Self.MEDICAL_EXAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_RECORD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MEDICAL_EXAM">
+        <PropertyRef Name="RECORD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MEDICAL_EXAM_FK2">
+    <End Role="EXAM_ITEM" Type="Self.EXAM_ITEM" Multiplicity="1" />
+    <End Role="MEDICAL_EXAM" Type="Self.MEDICAL_EXAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXAM_ITEM">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MEDICAL_EXAM">
+        <PropertyRef Name="ITEM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MEDICAL_RECORD_FK1">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+    <End Role="MEDICAL_RECORD" Type="Self.MEDICAL_RECORD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MEDICAL_RECORD">
+        <PropertyRef Name="DOCTOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MEDICAL_RECORD_FK2">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MEDICAL_RECORD" Type="Self.MEDICAL_RECORD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MEDICAL_RECORD">
+        <PropertyRef Name="PATIENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MEDICAL_TREATEMENT_FK1">
+    <End Role="MEDICAL_RECORD" Type="Self.MEDICAL_RECORD" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MEDICAL_TREATEMENT" Type="Self.MEDICAL_TREATEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_RECORD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MEDICAL_TREATEMENT">
+        <PropertyRef Name="RECORD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NURSE_DEPARTMENT_FK1">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="1" />
+    <End Role="NURSE" Type="Self.NURSE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="NAME" />
+      </Principal>
+      <Dependent Role="NURSE">
+        <PropertyRef Name="DEPT_NAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OPPOINTMENT_PATIENT_FK1">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+    <End Role="OPPOINTMENT" Type="Self.OPPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OPPOINTMENT">
+        <PropertyRef Name="PATIENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OPPOINTMENT_SCHEDULE_FK1">
+    <End Role="SCHEDULE" Type="Self.SCHEDULE" Multiplicity="1" />
+    <End Role="OPPOINTMENT" Type="Self.OPPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCHEDULE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OPPOINTMENT">
+        <PropertyRef Name="SCHEDULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRESCRIBE_FK1">
+    <End Role="MEDICAL_RECORD" Type="Self.MEDICAL_RECORD" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PRESCRIBE" Type="Self.PRESCRIBE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_RECORD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRESCRIBE">
+        <PropertyRef Name="RECORD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRESCRIBE_FK2">
+    <End Role="DRUG_INVENTORY" Type="Self.DRUG_INVENTORY" Multiplicity="1" />
+    <End Role="PRESCRIBE" Type="Self.PRESCRIBE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRUG_INVENTORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRESCRIBE">
+        <PropertyRef Name="DRUG_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REGISTRATION_RECORD_FK1">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="REGISTRATION_RECORD" Type="Self.REGISTRATION_RECORD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REGISTRATION_RECORD">
+        <PropertyRef Name="PATIENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REGISTRATION_RECORD_FK2">
+    <End Role="SCHEDULE" Type="Self.SCHEDULE" Multiplicity="1" />
+    <End Role="REGISTRATION_RECORD" Type="Self.REGISTRATION_RECORD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCHEDULE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REGISTRATION_RECORD">
+        <PropertyRef Name="SCHEDULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SCHEDULE_FK1">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SCHEDULE" Type="Self.SCHEDULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SCHEDULE">
+        <PropertyRef Name="DOCTOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="BLOOD_BANK" EntityType="Self.BLOOD_BANK" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="CHAT" EntityType="Self.CHAT" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="CLINICAL" EntityType="Self.CLINICAL" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="DEPARTMENT" EntityType="Self.DEPARTMENT" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="DRUG" EntityType="Self.DRUG" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="DRUG_INVENTORY" EntityType="Self.DRUG_INVENTORY" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="EXAM_ITEM" EntityType="Self.EXAM_ITEM" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="FOREGROUND_INFORMATION" EntityType="Self.FOREGROUND_INFORMATION" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="INFUSION" EntityType="Self.INFUSION" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="INVENTORY" EntityType="Self.INVENTORY" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="INVENTORY_EXAMPLE" EntityType="Self.INVENTORY_EXAMPLE" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="MANAGER" EntityType="Self.MANAGER" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="MEDICAL_EXAM" EntityType="Self.MEDICAL_EXAM" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="MEDICAL_INSTRUMENT" EntityType="Self.MEDICAL_INSTRUMENT" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="MEDICAL_RECORD" EntityType="Self.MEDICAL_RECORD" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="MEDICAL_TREATEMENT" EntityType="Self.MEDICAL_TREATEMENT" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="NURSE" EntityType="Self.NURSE" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="OPERATION" EntityType="Self.OPERATION" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="OPPOINTMENT" EntityType="Self.OPPOINTMENT" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="PATIENT" EntityType="Self.PATIENT" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="PRESCRIBE" EntityType="Self.PRESCRIBE" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="REGISTRATION_RECORD" EntityType="Self.REGISTRATION_RECORD" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="SCHEDULE" EntityType="Self.SCHEDULE" Schema="C##MANAGER" store:Type="Tables" />
+    <EntitySet Name="TEST1" EntityType="Self.TEST1" Schema="C##MANAGER" store:Type="Tables" />
+    <AssociationSet Name="CLINICAL_MEDICAL_RECORD_FK1" Association="Self.CLINICAL_MEDICAL_RECORD_FK1">
+      <End Role="MEDICAL_RECORD" EntitySet="MEDICAL_RECORD" />
+      <End Role="CLINICAL" EntitySet="CLINICAL" />
+    </AssociationSet>
+    <AssociationSet Name="CLINICAL_OPERATION_FK1" Association="Self.CLINICAL_OPERATION_FK1">
+      <End Role="OPERATION" EntitySet="OPERATION" />
+      <End Role="CLINICAL" EntitySet="CLINICAL" />
+    </AssociationSet>
+    <AssociationSet Name="DOCTOR_FK1" Association="Self.DOCTOR_FK1">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="DRUG_INVENTORY_DRUG_FK1" Association="Self.DRUG_INVENTORY_DRUG_FK1">
+      <End Role="DRUG" EntitySet="DRUG" />
+      <End Role="DRUG_INVENTORY" EntitySet="DRUG_INVENTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FOREGROUND_INFORMATION_PA_FK1" Association="Self.FOREGROUND_INFORMATION_PA_FK1">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="FOREGROUND_INFORMATION" EntitySet="FOREGROUND_INFORMATION" />
+    </AssociationSet>
+    <AssociationSet Name="INFUSION_DRUG_INVENTORY_FK1" Association="Self.INFUSION_DRUG_INVENTORY_FK1">
+      <End Role="DRUG_INVENTORY" EntitySet="DRUG_INVENTORY" />
+      <End Role="INFUSION" EntitySet="INFUSION" />
+    </AssociationSet>
+    <AssociationSet Name="INFUSION_MEDICAL_RECORD_FK1" Association="Self.INFUSION_MEDICAL_RECORD_FK1">
+      <End Role="MEDICAL_RECORD" EntitySet="MEDICAL_RECORD" />
+      <End Role="INFUSION" EntitySet="INFUSION" />
+    </AssociationSet>
+    <AssociationSet Name="INFUSION_OPERATION_FK1" Association="Self.INFUSION_OPERATION_FK1">
+      <End Role="OPERATION" EntitySet="OPERATION" />
+      <End Role="INFUSION" EntitySet="INFUSION" />
+    </AssociationSet>
+    <AssociationSet Name="INVENTORY_EXAMPLE_INVENTO_FK1" Association="Self.INVENTORY_EXAMPLE_INVENTO_FK1">
+      <End Role="INVENTORY" EntitySet="INVENTORY" />
+      <End Role="INVENTORY_EXAMPLE" EntitySet="INVENTORY_EXAMPLE" />
+    </AssociationSet>
+    <AssociationSet Name="MEDICAL_EXAM_DOCTOR_FK1" Association="Self.MEDICAL_EXAM_DOCTOR_FK1">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="MEDICAL_EXAM" EntitySet="MEDICAL_EXAM" />
+    </AssociationSet>
+    <AssociationSet Name="MEDICAL_EXAM_FK1" Association="Self.MEDICAL_EXAM_FK1">
+      <End Role="MEDICAL_RECORD" EntitySet="MEDICAL_RECORD" />
+      <End Role="MEDICAL_EXAM" EntitySet="MEDICAL_EXAM" />
+    </AssociationSet>
+    <AssociationSet Name="MEDICAL_EXAM_FK2" Association="Self.MEDICAL_EXAM_FK2">
+      <End Role="EXAM_ITEM" EntitySet="EXAM_ITEM" />
+      <End Role="MEDICAL_EXAM" EntitySet="MEDICAL_EXAM" />
+    </AssociationSet>
+    <AssociationSet Name="MEDICAL_RECORD_FK1" Association="Self.MEDICAL_RECORD_FK1">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="MEDICAL_RECORD" EntitySet="MEDICAL_RECORD" />
+    </AssociationSet>
+    <AssociationSet Name="MEDICAL_RECORD_FK2" Association="Self.MEDICAL_RECORD_FK2">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="MEDICAL_RECORD" EntitySet="MEDICAL_RECORD" />
+    </AssociationSet>
+    <AssociationSet Name="MEDICAL_TREATEMENT_FK1" Association="Self.MEDICAL_TREATEMENT_FK1">
+      <End Role="MEDICAL_RECORD" EntitySet="MEDICAL_RECORD" />
+      <End Role="MEDICAL_TREATEMENT" EntitySet="MEDICAL_TREATEMENT" />
+    </AssociationSet>
+    <AssociationSet Name="NURSE_DEPARTMENT_FK1" Association="Self.NURSE_DEPARTMENT_FK1">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+      <End Role="NURSE" EntitySet="NURSE" />
+    </AssociationSet>
+    <AssociationSet Name="OPPOINTMENT_PATIENT_FK1" Association="Self.OPPOINTMENT_PATIENT_FK1">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="OPPOINTMENT" EntitySet="OPPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="OPPOINTMENT_SCHEDULE_FK1" Association="Self.OPPOINTMENT_SCHEDULE_FK1">
+      <End Role="SCHEDULE" EntitySet="SCHEDULE" />
+      <End Role="OPPOINTMENT" EntitySet="OPPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="PRESCRIBE_FK1" Association="Self.PRESCRIBE_FK1">
+      <End Role="MEDICAL_RECORD" EntitySet="MEDICAL_RECORD" />
+      <End Role="PRESCRIBE" EntitySet="PRESCRIBE" />
+    </AssociationSet>
+    <AssociationSet Name="PRESCRIBE_FK2" Association="Self.PRESCRIBE_FK2">
+      <End Role="DRUG_INVENTORY" EntitySet="DRUG_INVENTORY" />
+      <End Role="PRESCRIBE" EntitySet="PRESCRIBE" />
+    </AssociationSet>
+    <AssociationSet Name="REGISTRATION_RECORD_FK1" Association="Self.REGISTRATION_RECORD_FK1">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="REGISTRATION_RECORD" EntitySet="REGISTRATION_RECORD" />
+    </AssociationSet>
+    <AssociationSet Name="REGISTRATION_RECORD_FK2" Association="Self.REGISTRATION_RECORD_FK2">
+      <End Role="SCHEDULE" EntitySet="SCHEDULE" />
+      <End Role="REGISTRATION_RECORD" EntitySet="REGISTRATION_RECORD" />
+    </AssociationSet>
+    <AssociationSet Name="SCHEDULE_FK1" Association="Self.SCHEDULE_FK1">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="SCHEDULE" EntitySet="SCHEDULE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

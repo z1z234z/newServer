@@ -1,0 +1,14 @@
+c:\users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\newServer.exe.config
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\obj\Debug\newServer.csprojResolveAssemblyReference.cache
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\newServer.exe
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\newServer.pdb
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\EngineIoClientDotNet.dll
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\EntityFramework.dll
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\SocketIoClientDotNet.dll
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\WebSocket4Net.dll
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\EntityFramework.xml
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\obj\Debug\newServer.exe
+C:\Users\houzhiwen\documents\visual studio 2015\Projects\newServer\newServer\obj\Debug\newServer.pdb
